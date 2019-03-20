@@ -16,13 +16,7 @@ class plateau:
     for carte in cartes:
       if carte.x==x & carte.y==y:
         print("erreur il y a déjà une carte à cette position")
-class carte:
-    def __init__(self, nom):
-        self.nom = nom
-        self.nb = 0
-        self.nb_posees = 0
-        self.nb_reserve = 0
-
+        
 class direction(Enum):
     nord = 0
     est = 90
@@ -38,19 +32,42 @@ class interface(Enum):
     riviere = auto()
 
 class cote:
-    def __init__(self, direction
+    def __init__(self, direction, interface)
+        self.direction = direction
+        self.interface = interface
+
+class cotes:
+    def __init__(self, nord, est, sud, ouest)
+        self.nord = nord
+        self.est = est
+        self.sud = sud
+        self.ouest = ouest
+        self.dictdir = { "nord": nord, "est":est, "sud": sud, "ouest": ouest }
+        self.listdir = [ nord, est, sud, ouest ]
+        
     
-    
-class carte:
-    def __init__(self):
-        self.nord = interfaces["pré"]
-        self.est = interfaces["pré"]
-        self.sud = interfaces["pré"]
-        self.ouest = interfaces["pré"]
+
+class carte(Enum):
+    chemin = 
+    def __init__(self, nom,
+                 nord = interface.pre,
+                 est = interface.pre,
+                 sud = interface.pre,
+                 ouest = interface.pre,
+                 image = "base",
+                 ):
+        self.cotes = { "nord
+        self.est = est
+        self.sud = sud
+        self.ouest = ouest
         self.cotes = [self.nord, self.est, self.sud, self.ouest]
         self.image = "img001"
         self.zones = []
         self.rotation = 
+        self.nom = nom
+        self.nb = 0
+        self.nb_posees = 0
+        self.nb_reserve = 0
 
 
 
