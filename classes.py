@@ -44,8 +44,7 @@ class cotes:
         self.ouest = ouest
         self.dictdir = { "nord": nord, "est":est, "sud": sud, "ouest": ouest }
         self.listdir = [ nord, est, sud, ouest ]
-        
-    
+ 
 
 class carte(Enum):
     chemin = 
@@ -56,18 +55,38 @@ class carte(Enum):
                  ouest = interface.pre,
                  image = "base",
                  ):
-        self.cotes = { "nord
-        self.est = est
-        self.sud = sud
-        self.ouest = ouest
-        self.cotes = [self.nord, self.est, self.sud, self.ouest]
+        self.cotes = cotes(nord, est, sud, ouest)
         self.image = "img001"
         self.zones = []
-        self.rotation = 
         self.nom = nom
         self.nb = 0
         self.nb_posees = 0
         self.nb_reserve = 0
+        self.positions = []
+        # Liste des rotations pertinentes pour la carte.
+        # La première rotation (nord = angle nul) doit être vraie.
+        # Par défaut les autres sont déterminées en fonction des symétries des bordures
+        # A modifier à la main pour tenir compte de la réalité des zones
+        if (nord == sud ) & (est == ouest):
+            if (nord == est):
+                self.rotations = [ direction.nord ] 
+            else:
+                self.rotations = [ direction.nord, direction.est ]
+         else:
+                self.rotations = [ direction.nord, direction.est, direction.sud, direction.ouest ] 
+    
+    def pose(self, x, y, rotation = direction.nord):
+        # La rotation n'est pas comparée à la liste des rotations pertinentes
+        # Doit être appelé
+        if self.nb_reserve>1:
+            self.nb_reserve -= 1
+            self.nb_posees1 += 1
+            self.positions.append((x,y,rotation))
+            return 0
+        else:
+            print("Il n'y a plus de carte à poser")
+            return 100
+    def     
 
 
 
