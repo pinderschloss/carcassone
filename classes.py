@@ -11,12 +11,38 @@ class Jeu:
 class plateau:
   def __init__(self):
     self.cartes = []
-  def pose(self, carte, x, y, r):
-    ## Vérifie l'absence d'interférence
-    for carte in cartes:
-      if carte.x==x & carte.y==y:
-        print("erreur il y a déjà une carte à cette position")
+  def pose(self, carte, x, y, rotation = direction.nord):
+    # On liste les interfaces
+    interfaceslibres = {}
+    for d in [direction.nord, direction.est, direction.sud, direction.ouest]:
+        interfaceslibres.append(d:carte.interface(d,rotation))
         
+        
+        
+    for carte_posee in cartes:
+      if carte_posee.x==x & carte_posee.y==y:
+        print("erreur il y a déjà une carte à cette position")
+        return 101
+      else:
+        # Si c'est une carte adjacente et vérifie leur compatibilité
+        if carte_posee.x == x: # sur l'axe nord-sud
+            if carte_posee.y = y+1: # il y a une carte posee à l'est
+                if carte_posee.
+                interfaceslibres.pop(direction.est)
+                
+        
+            if carte_posee.x.carte 
+        
+def position_libre(plateau, x, y):
+    for each carte in plateau.cartes:
+        if (carte.x == x) & (carte.y == y):
+            return False
+    return True
+
+def interface_libre
+
+
+
 class direction(Enum):
     nord = 0
     est = 90
@@ -86,7 +112,12 @@ class carte(Enum):
         else:
             print("Il n'y a plus de carte à poser")
             return 100
-    def     
+    
+    # Détermine quelle est l'interface dans une direction donnée après une rotation
+    # les rotations sont définies par la direction dans laquelle pointe le nord de
+    # la carte défini
+    def interface(self, direction, rotation):
+        
 
 
 
